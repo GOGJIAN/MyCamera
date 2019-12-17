@@ -45,6 +45,7 @@ public class EasyCameraActivity extends AppCompatActivity {
     private int cameraType;
     public static final int CAMERA_TYPE= 0;
     public static final int CAMERA_CORP_TYPE= 1;
+    private boolean b = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +150,8 @@ public class EasyCameraActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_camera);
         jCameraView = findViewById(R.id.jCameraView);
+        jCameraView.setCameraType(cameraType);
+        jCameraView.setActivity(EasyCameraActivity.this);
         jCameraView.enableCameraTip(Setting.enableCameraTip);
         if (Setting.cameraCoverView != null && Setting.cameraCoverView.get() != null) {
             View coverView = Setting.cameraCoverView.get();
@@ -171,9 +174,8 @@ public class EasyCameraActivity extends AppCompatActivity {
     }
 
     private void init() {
+
         //视频存储路径
-        jCameraView.setCameraType(cameraType);
-        jCameraView.setActivity(EasyCameraActivity.this);
         jCameraView.setSaveVideoPath(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + File.separator + applicationName);
         jCameraView.setFeatures(getFeature());
         jCameraView.setMediaQuality(Setting.RECORDING_BIT_RATE);
@@ -310,4 +312,5 @@ public class EasyCameraActivity extends AppCompatActivity {
         }
         super.onBackPressed();
     }
+
 }

@@ -348,13 +348,35 @@ public class CameraInterface implements Camera.PreviewCallback {
             }
         }
     }
+    public synchronized void setFrontCamera(SurfaceHolder holder,boolean isFrontCamera){
+        if (isFrontCamera) {
+            SELECTED_CAMERA = CAMERA_FRONT_POSITION;
+        } else {
+            SELECTED_CAMERA = CAMERA_POST_POSITION;
+        }
 
+        doDestroyCamera();
+        LogUtil.i("open start");
+        openCamera(SELECTED_CAMERA);
+//        mCamera = Camera.open();
+        if (this.mCamera != null) {
+            try {
+                this.mCamera.enableShutterSound(false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        LogUtil.i("open end");
+        doStartPreview(holder, screenProp);
+    }
     public synchronized void switchCamera(SurfaceHolder holder, float screenProp) {
+
         if (SELECTED_CAMERA == CAMERA_POST_POSITION) {
             SELECTED_CAMERA = CAMERA_FRONT_POSITION;
         } else {
             SELECTED_CAMERA = CAMERA_POST_POSITION;
         }
+
         doDestroyCamera();
         LogUtil.i("open start");
         openCamera(SELECTED_CAMERA);

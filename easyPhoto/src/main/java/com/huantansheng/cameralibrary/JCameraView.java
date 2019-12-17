@@ -134,7 +134,6 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private Activity activity;
     private int cameraType;
     private RelativeLayout rlMessageCamera;
-    private boolean b = true;
 
     public JCameraView(Context context) {
         this(context, null);
@@ -197,11 +196,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         imgSwitch = (ImageView) view.findViewById(R.id.img_switch);
 //      mSwitchCamera.setImageResource(iconSrc);
         mFlashLamp = (ImageView) view.findViewById(R.id.image_flash);
-//        if(b){
-//            machine.swtich(mVideoView.getHolder(), screenProp);
-//            b=false;
-//        }
-
+        mCropPhoto.setAspectRatio(3,4);
         setFlashRes();
         mFlashLamp.setOnClickListener(new OnClickListener() {
             @Override
@@ -213,6 +208,8 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 setFlashRes();
             }
         });
+
+
         imgSwitch.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -790,6 +787,13 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     }
     public void setCameraType(int cameraType) {
         this.cameraType = cameraType;
+        if(cameraType==CAMERA_TYPE){
+            //打开后摄像头
+            machine.front(mVideoView.getHolder(), false);
+        }else if(cameraType==CAMERA_CORP_TYPE){
+            //打开前摄像头
+            machine.front(mVideoView.getHolder(), true);
+        }
     }
     public int getCameraVisibility() {
         return  mVideoView.getVisibility();

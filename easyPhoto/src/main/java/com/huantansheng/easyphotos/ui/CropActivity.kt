@@ -4,10 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -35,6 +33,7 @@ class CropActivity : AppCompatActivity() {
         } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
+        img_crop_photo.setAspectRatio(3,4)
         val uri = intent.getStringExtra(PHOTO_URI)
         if(!TextUtils.isEmpty(uri)){
             img_crop_photo.setImageBitmap(BitmapFactory.decodeFile(uri))

@@ -46,6 +46,11 @@ public class BorrowVideoState implements State {
     }
 
     @Override
+    public void front(SurfaceHolder holder, boolean isFrontCamera) {
+
+    }
+
+    @Override
     public void restart() {
 
     }

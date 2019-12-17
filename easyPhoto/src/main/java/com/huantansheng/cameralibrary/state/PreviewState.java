@@ -50,6 +50,11 @@ class PreviewState implements State {
     }
 
     @Override
+    public void front(SurfaceHolder holder, boolean isFrontCamera) {
+        CameraInterface.getInstance().setFrontCamera(holder, isFrontCamera);
+    }
+
+    @Override
     public void restart() {
 
     }

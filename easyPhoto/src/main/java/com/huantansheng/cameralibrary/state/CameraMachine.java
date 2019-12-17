@@ -87,6 +87,11 @@ public class CameraMachine implements State {
     }
 
     @Override
+    public void front(SurfaceHolder holder, boolean isFrontCamera) {
+        state.front(holder, isFrontCamera);
+    }
+
+    @Override
     public void restart() {
         state.restart();
     }

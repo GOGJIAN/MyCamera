@@ -23,6 +23,8 @@ public interface State {
 
     void swtich(SurfaceHolder holder, float screenProp);
 
+    void front(SurfaceHolder holder, boolean isFrontCamera);
+
     void restart();
 
     void capture();
