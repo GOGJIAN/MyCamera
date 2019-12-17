@@ -1,0 +1,2 @@
+include ':app', ':easyPhoto'
+rootProject.name='MyCameraDemo'
