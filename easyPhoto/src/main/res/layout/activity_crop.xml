@@ -11,12 +11,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             imagecrop:outsideLayerColor="#66000000"
-            imagecrop:setInnerGridMode="on"
+            imagecrop:setInnerGridMode="@integer/photos_columns_easy_photos"
             imagecrop:gridInnerStroke="1dp"
             imagecrop:gridInnerColor="#66ffffff"
             imagecrop:setOuterGridMode="on"
             imagecrop:gridOuterStroke="1dp"
             imagecrop:gridOuterColor="#ffffff"/>
+    <View
+        android:id="@+id/imgbg_view"
+        android:layout_centerVertical="true"
+        android:background="@drawable/image_crop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <RelativeLayout
             android:id="@+id/crop_title"
             android:paddingTop="28dp"
