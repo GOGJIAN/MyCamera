@@ -5,15 +5,16 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -449,12 +450,15 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             }
         });
 
-        Display display = activity.getWindowManager().getDefaultDisplay();
-        int width = display.getWidth();
+        Resources resources = this.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
         FrameLayout.LayoutParams layoutParams = (LayoutParams) imgBgView.getLayoutParams();
         layoutParams.height=width;
         layoutParams.width=ViewGroup.LayoutParams.MATCH_PARENT;
         imgBgView.setLayoutParams(layoutParams);
+
 
     }
 

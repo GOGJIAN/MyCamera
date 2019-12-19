@@ -36,12 +36,15 @@ class CropActivity : AppCompatActivity() {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
         img_crop_photo.setAspectRatio(3,4)
-        val display = this@CropActivity.getWindowManager().getDefaultDisplay()
-        val width = display.getWidth()
+        val resources = this.resources
+        val dm = resources.displayMetrics
+        val width = dm.widthPixels
+        val height = dm.heightPixels
         val layoutParams = imgbg_view.getLayoutParams() as FrameLayout.LayoutParams
         layoutParams.height = width
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
         imgbg_view.setLayoutParams(layoutParams)
+
         val uri = intent.getStringExtra(PHOTO_URI)
         if(!TextUtils.isEmpty(uri)){
             img_crop_photo.setImageBitmap(BitmapFactory.decodeFile(uri))
