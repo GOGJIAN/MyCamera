@@ -40,7 +40,7 @@ class CropActivity : AppCompatActivity() {
         val dm = resources.displayMetrics
         val width = dm.widthPixels
         val height = dm.heightPixels
-        val layoutParams = imgbg_view.getLayoutParams() as FrameLayout.LayoutParams
+        val layoutParams = imgbg_view.getLayoutParams() as RelativeLayout.LayoutParams
         layoutParams.height = width
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
         imgbg_view.setLayoutParams(layoutParams)
