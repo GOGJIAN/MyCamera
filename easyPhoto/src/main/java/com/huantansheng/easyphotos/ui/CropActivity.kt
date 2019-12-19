@@ -12,7 +12,6 @@ import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.huantansheng.cameralibrary.util.FileUtil
 import com.huantansheng.easyphotos.R
@@ -28,7 +27,7 @@ class CropActivity : AppCompatActivity() {
             val window = window
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor = Color.TRANSPARENT
@@ -40,7 +39,7 @@ class CropActivity : AppCompatActivity() {
         val dm = resources.displayMetrics
         val width = dm.widthPixels
         val height = dm.heightPixels
-        val layoutParams = imgbg_view.getLayoutParams() as RelativeLayout.LayoutParams
+        val layoutParams = imgbg_view.getLayoutParams()
         layoutParams.height = width
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
         imgbg_view.setLayoutParams(layoutParams)
