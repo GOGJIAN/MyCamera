@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.huantansheng.cameralibrary.util.FileUtil
@@ -34,15 +33,8 @@ class CropActivity : AppCompatActivity() {
         } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
-        img_crop_photo.setAspectRatio(3,4)
-        val resources = this.resources
-        val dm = resources.displayMetrics
-        val width = dm.widthPixels
-        val height = dm.heightPixels
-        val layoutParams = imgbg_view.getLayoutParams()
-        layoutParams.height = width
-        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-        imgbg_view.setLayoutParams(layoutParams)
+//        img_crop_photo.setAspectRatio(3,4)
+
 
         val uri = intent.getStringExtra(PHOTO_URI)
         if(!TextUtils.isEmpty(uri)){

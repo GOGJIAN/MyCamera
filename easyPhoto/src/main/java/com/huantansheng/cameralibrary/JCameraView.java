@@ -133,7 +133,6 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private TextView tvCameraCancel;
     private TextView tvCropDone;
     private TextView tvDone;
-    private View imgBgView;
     private Activity activity;
     private int cameraType;
     private RelativeLayout rlMessageCamera;
@@ -182,7 +181,6 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         View view = LayoutInflater.from(getContext()).inflate(R.layout.camera_view, this);
         mVideoView = (VideoView) view.findViewById(R.id.video_preview);
         mCropPhoto =  view.findViewById(R.id.image_crop_photo);
-        imgBgView =  view.findViewById(R.id.imgbg_view);
         mPhoto =  view.findViewById(R.id.image_photo);
         viewCamera = view.findViewById(R.id.view_camera);
         rlTitle = view.findViewById(R.id.rl_title);
@@ -200,7 +198,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         imgSwitch = (ImageView) view.findViewById(R.id.img_switch);
 //      mSwitchCamera.setImageResource(iconSrc);
         mFlashLamp = (ImageView) view.findViewById(R.id.image_flash);
-        mCropPhoto.setAspectRatio(3,4);
+        //mCropPhoto.setAspectRatio(3,4);
         setFlashRes();
         mFlashLamp.setOnClickListener(new OnClickListener() {
             @Override
@@ -249,7 +247,6 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 //                                }
                                 mCropPhoto.setImageBitmap(bitmap);
                                 mCropPhoto.setVisibility(VISIBLE);
-                                imgBgView.setVisibility(VISIBLE);
                                 rlTitle.setVisibility(VISIBLE);
                                 rlCamera.setVisibility(GONE);
                                 mVideoView.setVisibility(INVISIBLE);
@@ -280,7 +277,6 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             public void onClick(View v) {
                 rlTitle.setVisibility(GONE);
                 mCropPhoto.setVisibility(GONE);
-                imgBgView.setVisibility(GONE);
                 rlCamera.setVisibility(VISIBLE);
                 mVideoView.setVisibility(VISIBLE);
             }
@@ -450,14 +446,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             }
         });
 
-        Resources resources = this.getResources();
-        DisplayMetrics dm = resources.getDisplayMetrics();
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-        FrameLayout.LayoutParams layoutParams = (LayoutParams) imgBgView.getLayoutParams();
-        layoutParams.height=width;
-        layoutParams.width=ViewGroup.LayoutParams.MATCH_PARENT;
-        imgBgView.setLayoutParams(layoutParams);
+
 
 
     }
@@ -798,7 +787,6 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         rlTitle.setVisibility(GONE);
         mPhoto.setVisibility(GONE);
         mCropPhoto.setVisibility(GONE);
-        imgBgView.setVisibility(GONE);
         rlCamera.setVisibility(VISIBLE);
         mVideoView.setVisibility(VISIBLE);
         rlMessageCamera.setVisibility(GONE);
