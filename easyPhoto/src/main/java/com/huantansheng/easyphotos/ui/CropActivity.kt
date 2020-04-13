@@ -33,7 +33,7 @@ class CropActivity : AppCompatActivity() {
         } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
-//        img_crop_photo.setAspectRatio(3,4)
+        img_crop_photo.setAspectRatio(intent.getIntExtra(WIDTH,1),intent.getIntExtra(HEIGHT,1))
 
 
         val uri = intent.getStringExtra(PHOTO_URI)
@@ -65,10 +65,14 @@ class CropActivity : AppCompatActivity() {
     companion object{
         const val PHOTO_URI = "photo_uri"
         const val PHOTO_PATH = "photo_path"
+        const val WIDTH = "width"
+        const val HEIGHT = "height"
         const val REQUEST_CODE_CROP = 8
-        fun open(context: Context, imageUri:String){
+        fun open(context: Context, imageUri:String,width:Int = 1,height:Int = 1){
             val intent = Intent(context,CropActivity::class.java)
             intent.putExtra(PHOTO_URI,imageUri)
+            intent.putExtra(WIDTH,width)
+            intent.putExtra(HEIGHT,height)
             (context as AppCompatActivity).startActivityForResult(intent, REQUEST_CODE_CROP)
         }
     }
